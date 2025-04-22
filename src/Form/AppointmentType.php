@@ -4,8 +4,10 @@ namespace App\Form;
 
 use App\Entity\Appointment;
 use App\Entity\User;
+use App\Repository\UserRepository;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -25,11 +27,21 @@ class AppointmentType extends AbstractType
             ->add('discussed')
             ->add('patient', EntityType::class, [
                 'class' => User::class,
-                'choice_label' => 'id',
+                'choice_label' => function(User $user) {
+                    return $user->getFirstName() . ' ' . $user->getLastName();
+                },
+                'query_builder' => function(UserRepository $repository) {
+                    return $repository->createQueryBuilder('u')
+                        ->where('u.roles LIKE :role')
+                        ->setParameter('role', '%ROLE_PATIENT%');
+                },
             ])
             ->add('specialist', EntityType::class, [
                 'class' => User::class,
-                'choice_label' => 'id',
+                'choice_label' => 'first_name',
+            ])
+            ->add('submit', SubmitType::class, [
+                'label' => 'Submit',
             ])
         ;
     }

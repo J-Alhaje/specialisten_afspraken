@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello PatientController!{% endblock %}
+{% block title %}Mijn Afspraken{% endblock %}
 
 {% block body %}
     {% include 'nav.html.twig' %}
@@ -13,29 +13,34 @@
         <div class="row">
             <div class="col-md-10">
                 <h1>Welkom {{ app.user.firstName }} {{ app.user.lastName }}</h1>
-                <p>Patient afspraken</p>
+                <h2>Mijn Afspraken</h2>
 
                 <table class="table">
                     <thead>
                     <tr>
-                        <th scope="col">datum</th>
-                        <th scope="col">tijd</th>
-                        <th scope="col">patient</th>
-                        <th scope="col">onderwerp</th>
-                        <th scope="col">problemen</th>
-                        <th scope="col">opmerking</th>
+                        <th scope="col">Datum</th>
+                        <th scope="col">Tijd</th>
+                        <th scope="col">Specialist</th>
+                        <th scope="col">Specialisme</th>
+                        <th scope="col">Onderwerp</th>
+                        <th scope="col">Problemen</th>
+                        <th scope="col">Opmerkingen</th>
                     </tr>
                     </thead>
                     <tbody>
-
-                    {% for a in app.user.specialistAppointments %}
+                    {% for appointment in appointments %}
                         <tr>
-                            <td>{{ a.datel | date("d-m-y") }}</td>
-                            <td>{{ a.time | date("h:i") }}</td>
-                            <td>{{ a.patient.name }}</td>
-                            <td>{{ a.subject }}</td>
-                            <td>{{ a.problems }}</td>
-                            <td>{{ a.discussed }}</td>
+                            <td>{{ appointment.date|date('d-m-Y') }}</td>
+                            <td>{{ appointment.time|date('H:i') }}</td>
+                            <td>{{ appointment.specialist.firstName }} {{ appointment.specialist.lastName }}</td>
+                            <td>{{ appointment.specialist.specialization }}</td>
+                            <td>{{ appointment.subject }}</td>
+                            <td>{{ appointment.problems }}</td>
+                            <td>{{ appointment.discussed }}</td>
+                        </tr>
+                    {% else %}
+                        <tr>
+                            <td colspan="7">Geen afspraken gevonden</td>
                         </tr>
                     {% endfor %}
                     </tbody>
