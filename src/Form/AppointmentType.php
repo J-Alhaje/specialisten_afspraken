@@ -36,10 +36,10 @@ class AppointmentType extends AbstractType
                         ->setParameter('role', '%ROLE_PATIENT%');
                 },
             ])
-            ->add('specialist', EntityType::class, [
-                'class' => User::class,
-                'choice_label' => 'first_name',
-            ])
+//            ->add('specialist', EntityType::class, [
+//                'class' => User::class,
+//                'choice_label' => 'first_name',
+//            ])
             ->add('submit', SubmitType::class, [
                 'label' => 'Submit',
             ])

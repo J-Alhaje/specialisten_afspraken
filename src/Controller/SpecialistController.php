@@ -44,4 +44,19 @@ final class SpecialistController extends AbstractController
             'form' => $form,
         ]);
     }
+    #[Route('/specialist/appointment/edit/{id}', name: 'app_appointment_update')]
+    public function edit(EntityManagerInterface $entityManager,Request $request, Appointment $appointment): Response
+    {
+        $form = $this->createForm(AppointmentType::class, $appointment);
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()) {
+            $entityManager->persist($appointment);
+            $entityManager->flush();
+            $this->addFlash("success", "Afspraak succesvol aangepast");
+            return $this->redirectToRoute('app_specialist_home',['form'=> $form->getId()]);
+        }
+        return $this->render('specialist/new.html.twig', [
+            'form' => $form,
+        ]);
+    }
 }
