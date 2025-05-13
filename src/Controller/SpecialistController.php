@@ -59,4 +59,13 @@ final class SpecialistController extends AbstractController
             'form' => $form,
         ]);
     }
+
+    #[Route('/specialist/delete/{id}', name: 'app_appointment_delete')]
+    public function delete(EntityManagerInterface $entityManager, Appointment $appointment): Response {
+        $entityManager->remove($appointment);
+        $entityManager->flush();
+        $this->addFlash('success', 'Afspraak is verwijderd');
+        return $this->redirectToRoute('app_specialist_home');
+    }
+
 }

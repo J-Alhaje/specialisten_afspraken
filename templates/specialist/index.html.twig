@@ -25,6 +25,7 @@
                         <th scope="col">Problemen</th>
                         <th scope="col">Opmerkingen</th>
                         <th scope="col">Update</th>
+                        <th scope="col">Delete</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -36,7 +37,8 @@
                             <td>{{ appointment.subject }}</td>
                             <td>{{ appointment.problems }}</td>
                             <td>{{ appointment.discussed }}</td>
-                            <td><a href="{{ path('app_appointment_update', {'id':appointment.id}) }}">update</a></td>
+                            <td><a href="{{ path('app_appointment_update', {'id':appointment.id}) }}" class="btn btn-warning">update</a></td>
+                            <td><a href="{{ path('app_appointment_delete', {'id':appointment.id}) }}" class="btn btn-danger">delete</a></td>
                         </tr>
                     {% else %}
                         <tr>
