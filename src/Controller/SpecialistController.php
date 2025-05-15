@@ -53,7 +53,7 @@ final class SpecialistController extends AbstractController
             $entityManager->persist($appointment);
             $entityManager->flush();
             $this->addFlash("success", "Afspraak succesvol aangepast");
-            return $this->redirectToRoute('app_specialist_home',['form'=> $form->getId()]);
+            return $this->redirectToRoute('app_specialist_home');
         }
         return $this->render('specialist/new.html.twig', [
             'form' => $form,
