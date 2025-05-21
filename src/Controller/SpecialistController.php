@@ -53,7 +53,7 @@ final class SpecialistController extends AbstractController
             $entityManager->persist($appointment);
             $entityManager->flush();
             $this->addFlash("success", "Afspraak succesvol aangepast");
-            return $this->redirectToRoute('app_specialist_home');
+            return $this->redirectToRoute('app_specialist_home', ['appointment' => $appointment->getId()]);
         }
         return $this->render('specialist/new.html.twig', [
             'form' => $form,
@@ -67,5 +67,15 @@ final class SpecialistController extends AbstractController
         $this->addFlash('success', 'Afspraak is verwijderd');
         return $this->redirectToRoute('app_specialist_home');
     }
+
+
+//    #[Route('/smartphone/show/{id}', name: 'app_show_smartphone')]
+//    public function show(Smartphone $smartphone, EntityManagerInterface $entityManager, int $id): Response
+//    {
+//
+//        return $this->render('smartphone/show.html.twig', [
+//            'smartphone' => $entityManager->getRepository(Smartphone::class)->find($id),
+//        ]);
+//    }
 
 }

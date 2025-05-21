@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 04, 2025 at 04:15 PM
+-- Generation Time: May 21, 2025 at 06:44 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -46,7 +46,11 @@ INSERT INTO `appointment` (`id`, `date`, `time`, `subject`, `problems`, `discuss
 (1, '2025-04-15', '09:52:00', 'vuodfuidsbvi', 'zdvcsdyvc', 'duvsuidvisdb', 8, 2),
 (2, '2025-04-15', '10:06:00', 'dv dkfj', 'df', 'efvr', 8, 2),
 (3, '2025-04-15', '13:56:00', 'dfgrfgr', 'eferf', 'rergrgr', 8, 1),
-(4, '2025-04-21', '16:21:00', 'dviebvebfvbe', 'verfvsd', 'dfb fgbf', 7, 3);
+(5, '2025-05-06', '09:31:00', 'sdgsd', 'sdd', 'zdg', 9, 3),
+(6, '2025-05-13', '14:50:00', 'hart', 'hart probleem', 'volgende week', 8, 3),
+(7, '2025-05-13', '14:21:00', 'gnrfn', 'fgndfg', 'ngdfn', 10, 3),
+(8, '2025-05-15', '00:30:00', 'Moeilijk met ademen', 'vcywdvc', 'volgend afspraak is volgend week', 11, 3),
+(9, '2025-05-19', '23:06:00', 'asdf', 'dfgh', 'fyguh', 8, 2);
 
 -- --------------------------------------------------------
 
@@ -110,14 +114,19 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`id`, `email`, `roles`, `password`, `first_name`, `last_name`, `adress`, `zip_code`, `city`, `specialization`) VALUES
-(1, 'hallo@gmail.nl', '[\"ROLE_SPECIALIST\"]', '$2y$13$A6a4geXzYbMimTGiQMx1eeK5H16Jjyvc8QgWEKYNZRrA8phF/iksq', 'hallo', 'yes', 'pece', NULL, 'bbfiv', NULL),
+(1, 'hallo@gmail.nl', '[\"ROLE_SPECIALIST\"]', '$2y$13$A6a4geXzYbMimTGiQMx1eeK5H16Jjyvc8QgWEKYNZRrA8phF/iksq', 'hallo', 'yes', 'pece', NULL, 'bbfiv', 'internist'),
 (2, 'hi', '[]', '$2y$13$.gEkP69ma6K.glhNri8TqeU5m4cWV0PV/8f2AT.YBaw89dmhFa3E2', 'ali', 'malf', 'edef', '1232pv', 'delft', NULL),
-(3, 'ali@gmail.com', '[\"ROLE_SPECIALIST\"]', '$2y$13$ZdbH5Vf4MsYs00HO5CFpJubCSz7FuNwtKEvU2nvdtC.tVi7DaytcS', 'ali', 'm', 'bcdhsdbch', '1232pv', 'delft', NULL),
-(4, 'alim@gmail.com', '[]', '$2y$13$DORyrLE8HXQXcrYuVeKg0uTNzXQCK7nTJpesGefdDYeg9IIYUnb0K', 'Ali', 'M', 'newyork', '1234ab', 'delft', NULL),
+(3, 'ali@gmail.com', '[\"ROLE_SPECIALIST\"]', '$2y$13$ZdbH5Vf4MsYs00HO5CFpJubCSz7FuNwtKEvU2nvdtC.tVi7DaytcS', 'ali', 'm', 'bcdhsdbch', '1232pv', 'delft', 'hartchirurg'),
+(4, 'alim@gmail.com', '[\"ROLE_ADMIN\"]', '$2y$13$DORyrLE8HXQXcrYuVeKg0uTNzXQCK7nTJpesGefdDYeg9IIYUnb0K', 'Ali', 'M', 'newyork', '1234ab', 'delft', NULL),
 (5, 'jamil@gmail.com', '[]', '$2y$13$B4lmhRnrx8jW9VpfBMXoHOYt6vuT8l.caLTjQnFBpsDwbNR5GiCwG', 'jamil', 'hamada', 'wertuhde', '5992', 'Almere', NULL),
 (6, 'ahmed@gmail.com', '[\"ROLE_SPECIALIST\"]', '$2y$13$fIcrG4sGiJD50d9mgDL6V.ZzJ4Stgtb02P9S084TR4oE9oZh25saO', 'Ahmed', 'M', 'rioejfri', '12345ii', 'delft', NULL),
 (7, 'jak@gmail.com', '[\"ROLE_PATIENT\"]', '$2y$13$MBvva9qoU2qODWroLhibZelxhaCuWXF5SbgGMfmp4qVw6whMndvGu', 'jak', 'm', 'qedbei', '1234vb', 'delft', NULL),
-(8, 'nick@gmail.com', '[\"ROLE_PATIENT\"]', '$2y$13$dDzXiMOrTrbqqpyieFd3b.Fce2Yu8JNC4ZujisRZL4FyyYY0mnzAW', 'nick', 'devlin', 'bfiefuvr', '1234ab', 'delft', NULL);
+(8, 'nick@gmail.com', '[\"ROLE_PATIENT\"]', '$2y$13$dDzXiMOrTrbqqpyieFd3b.Fce2Yu8JNC4ZujisRZL4FyyYY0mnzAW', 'nick', 'devlin', 'bfiefuvr', '1234ab', 'delft', NULL),
+(9, 'noam@gmail.com', '[\"ROLE_PATIENT\"]', '$2y$13$AS8Wxs2c5F4BJCAg8eLfbeew2KpKul.OgL/cze.zR0U6N4rYo880u', 'noam', 'B', 'spoedstraat', '1234bn', 'delft', NULL),
+(10, 'chris@gmail.com', '[\"ROLE_PATIENT\"]', '$2y$13$sawMziaE4/qWSlAh4M68c.IQtv9NSOKTipJzOY9ENAU/Axe3EU.g.', 'chris', 'lemmen', 'Hoefkade', '1234 Ab', 'delft', NULL),
+(11, 'Adnan@gmail.com', '[\"ROLE_PATIENT\"]', '$2y$13$pCEaFJ7JY4WDogAQey2kF.9TQhiydWSgxi.5sM.Yr3ppHTeSQdfOK', 'Adnan', 'Arabbaj', 'rijswijk', '1234ab', 'Rijswijk', NULL),
+(12, 'mohammed@gmail.com', '[\"ROLE_ADMIN\"]', '123456', 'ali', 'm', 'bcsdk', 'vdf', 'efv', 'ev'),
+(13, 'one@gmail.com', '[[\"ROLE_PATIENT\",\"ROLE_ADMIN\"]]', '123456', 'ccssd', 'sdvdf', 'dfsvsdf', 'sdfvs', 'sdfv', 'sdfvs');
 
 --
 -- Indexes for dumped tables
@@ -161,7 +170,7 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `appointment`
 --
 ALTER TABLE `appointment`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `messenger_messages`
@@ -173,7 +182,7 @@ ALTER TABLE `messenger_messages`
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- Constraints for dumped tables

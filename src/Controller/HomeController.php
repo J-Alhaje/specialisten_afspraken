@@ -14,7 +14,6 @@ final class HomeController extends AbstractController
         if($this->isGranted('ROLE_Admin')) {
 //           dd("test 1");
             return $this->redirectToRoute('app_admin');
-
         }
 //        dd("test ali");
 //        dd($this->getUser()->getRoles());
